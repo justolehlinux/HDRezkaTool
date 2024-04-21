@@ -121,7 +121,7 @@ class Download:
 
         season = str(season).zfill(2)
         episode = str(episode).zfill(2)
-        file_name = f"{downloaded_folder}/s{season}e{episode}.mp4"
+        file_name = f"{downloaded_folder}/s{season}e{episode}-{self.quality}.mp4"
 
         download_data = {
             'stream_url': stream_url,
@@ -154,6 +154,7 @@ class Download:
     def __download( download_data):
         if download_data['stream_url']:
             print (download_data['file_name'])
+            print (download_data['stream_url'])
             History().status = "run"
             fullpath = os.path.join(os.path.curdir, download_data['file_name'])
 
@@ -165,7 +166,7 @@ class Download:
                     file=sys.stdout,
                     desc=download_data['file_name']
             ) as progress:
-                for chunk in r.iter_content(chunk_size=4096):
+                for chunk in r.iter_content(chunk_size=1024*4):
                     if chunk:
                         datasize = f.write(chunk)
                         progress.update(datasize)

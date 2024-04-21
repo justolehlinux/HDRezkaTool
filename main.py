@@ -24,7 +24,7 @@ print (f'\n{download_data}\n')
 if 0:
     quality = input("Введите качество: ")
 else:
-    quality = "1080"
+    quality = "720"
 
 downloader = Download(download_data, quality)
 
