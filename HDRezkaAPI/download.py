@@ -44,7 +44,7 @@ class Download:
         while not correct_season:
             try:
                 if History().status == 'run' and History().run_season !="":
-                    season = History().run_season()
+                    season = History().run_season
                     self.download_seasons(season, seasons_count +1)
                 else:
                     for season in range(1, seasons_count + 1):
